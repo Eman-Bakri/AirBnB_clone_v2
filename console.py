@@ -118,7 +118,6 @@ class HBNBCommand(cmd.Cmd):
         try:
             if not args:
                 raise SyntaxError()
-                return
 
             _list = args.split(" ")
             _dict_keyw = {}
