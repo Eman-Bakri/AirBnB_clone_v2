@@ -23,14 +23,14 @@ class DBStorage:
     def __init__(self):
         """Initiates models"""
 
-        user = getenv("HBNB_MYSQL_USER")
-        passwd = getenv("HBNB_MYSQL_PWD")
+        _newuser = getenv("HBNB_MYSQL_USER")
+        _passwrd = getenv("HBNB_MYSQL_PWD")
         host = getenv("HBNB_MYSQL_HOST")
         db = getenv("HBNB_MYSQL_DB")
         env = getenv("HBNB_ENV")
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                      .format(user, passwd, host, db),
+                                      .format(_newuser, _passwrd, host, db),
                                       pool_pre_ping=True)
 
         if env == "test":
