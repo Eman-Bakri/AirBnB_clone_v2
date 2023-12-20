@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-"""Amenity class Module"""
+"""
+   Amenity class Module
+"""
 from models.base_model import BaseModel, Base
 from models.place import place_amenity
 
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
+
+storage_engine = environ.get("HBNB_TYPE_STORAGE")
 
 
 class Amenity(BaseModel, Base):
