@@ -27,8 +27,8 @@ class FileStorage:
 
         if cls:
             _fulldiction = self.__objects
-            for kwd in _fulldiction:
-                _splitted = kwd.replace('.', ' ')
+            for key in _fulldiction:
+                _splitted = key.replace('.', ' ')
                 _splitted = shlex.split(_splitted)
 
                 if (_splitted[0] == cls.__name__):
@@ -70,11 +70,10 @@ class FileStorage:
         """ delete an object """
 
         if obj is not None:
-            kwd = "{}.{}".format(type(obj).__name__, obj.id)
-            del self.__objects[kwd]
+            key = "{}.{}".format(type(obj).__name__, obj.id)
+            del self.__objects[key]
 
     def close(self):
         """ calls reload()
         """
         self.reload()
-

@@ -23,14 +23,14 @@ class DBStorage:
     def __init__(self):
         """Initiates models"""
 
-        _newuser = getenv("HBNB_MYSQL_USER")
-        _passwrd = getenv("HBNB_MYSQL_PWD")
+        user = getenv("HBNB_MYSQL_USER")
+        passwd = getenv("HBNB_MYSQL_PWD")
         host = getenv("HBNB_MYSQL_HOST")
         db = getenv("HBNB_MYSQL_DB")
         env = getenv("HBNB_ENV")
 
         self.__engine = create_engine('mysql+mysqldb://{}:{}@{}/{}'
-                                      .format(_newuser, _passwrd, host, db),
+                                      .format(user, passwd, host, db),
                                       pool_pre_ping=True)
 
         if env == "test":
@@ -45,8 +45,8 @@ class DBStorage:
             _obj_query = self.__session.query(cls)
 
             for element in _obj_query:
-                kwd = "{}.{}".format(type(element).__name__, element.id)
-                _obj_dict[kwd] = element
+                key = "{}.{}".format(type(element).__name__, element.id)
+                _obj_dict[key] = element
 
         else:
             _list_class = [State, City, User, Place, Review, Amenity]
@@ -54,8 +54,8 @@ class DBStorage:
                 _obj_query = self.__session.query(clause)
 
                 for element in _obj_query:
-                    kwd = "{}.{}".format(type(element).__name__, element.id)
-                    _obj_dict[kwd] = element
+                    key = "{}.{}".format(type(element).__name__, element.id)
+                    _obj_dict[key] = element
         return (_obj_dict)
 
     def new(self, obj):
@@ -64,7 +64,6 @@ class DBStorage:
 
     def reload(self):
         """to reload"""
-
         Base.metadata.create_all(self.__engine)
         _makesess = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(_makesess)
@@ -81,6 +80,4 @@ class DBStorage:
 
     def close(self):
         """ call to close()"""
-
         self.__session.close()
-
