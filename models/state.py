@@ -11,7 +11,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 
 
-
 class State(BaseModel, Base):
     """Class State"""
     __tablename__ = 'states'

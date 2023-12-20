@@ -15,7 +15,7 @@ class BaseModel:
     """A class that defines all other models
     """
 
-    id = Column(String(60), unique=True, 
+    id = Column(String(60), unique=True,
                 nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
     updated_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
