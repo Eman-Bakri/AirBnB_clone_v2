@@ -11,11 +11,10 @@ from sqlalchemy.orm import relationship
 
 
 class City(BaseModel, Base):
-    """City class with state id & name
-    """
+    """City class with state id & name"""
 
-    __tablename__ = "cities"
+    __tablename__ = 'cities'
     name = Column(String(128), nullable=False)
     state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
-    places = relationship("Place", cascade='all, delete, delete-orphan',
-                          backref="cities")
+    places = relationship('Place', cascade='all, delete, delete-orphan',
+                          backref='cities')

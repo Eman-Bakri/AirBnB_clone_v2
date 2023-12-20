@@ -15,7 +15,7 @@ class BaseModel:
     """A class that defines all other models
     """
 
-    id = Column(String(60), unique=True,
+    id = Column(String(60), unique=True, 
                 nullable=False, primary_key=True)
     created_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
     updated_at = Column(DateTime, nullable=False, default=(datetime.utcnow()))
@@ -25,16 +25,16 @@ class BaseModel:
         """
         if kwargs:
             for kw, _val in kwargs.items():
-                if kw == "created_at" or kw == "updated_at":
+                if kw == 'created_at' or kw == 'updated_at':
                     _val = datetime.strptime(_val, "%Y-%m-%dT%H:%M:%S.%f")
-                if kw != "__class__":
+                if kw != '__class__':
                     setattr(self, kw, _val)
 
-            if "id" not in kwargs:
+            if 'id' not in kwargs:
                 self.id = str(uuid.uuid4())
-            if "created_at" not in kwargs:
+            if 'created_at' not in kwargs:
                 self.created_at = datetime.now()
-            if "updated_at" not in kwargs:
+            if 'updated_at' not in kwargs:
                 self.updated_at = datetime.now()
 
         else:
@@ -46,9 +46,9 @@ class BaseModel:
         """
 
         _dictlist = dict(self.__dict__)
-        _dictlist["__class__"] = str(type(self).__name__)
-        _dictlist["created_at"] = self.created_at.isoformat()
-        _dictlist["updated_at"] = self.updated_at.isoformat()
+        _dictlist['__class__'] = str(type(self).__name__)
+        _dictlist['created_at'] = self.created_at.isoformat()
+        _dictlist['updated_at'] = self.updated_at.isoformat()
         if '_sa_instance_state' in _dictlist.keys():
             del _dictlist['_sa_instance_state']
         return _dictlist

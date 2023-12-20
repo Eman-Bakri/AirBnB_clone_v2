@@ -11,12 +11,13 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 
 
+
 class State(BaseModel, Base):
     """Class State"""
-    __tablename__ = "states"
+    __tablename__ = 'states'
     name = Column(String(128), nullable=False)
-    cities = relationship("City", cascade='all, delete, delete-orphan',
-                          backref="state")
+    cities = relationship('City', cascade='all, delete, delete-orphan',
+                          backref='state')
 
     @property
     def cities(self):

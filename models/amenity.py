@@ -1,22 +1,15 @@
 #!/usr/bin/python3
-"""
-   Amenity class Module
-"""
+"""Amenity class Module"""
 from models.base_model import BaseModel, Base
-from models.place import place_amenity
+
 
 from sqlalchemy import Column, String
 from sqlalchemy.orm import relationship
 
-storage_engine = environ.get("HBNB_TYPE_STORAGE")
-
 
 class Amenity(BaseModel, Base):
-    """Module for class Amenity
-    Attributes:
-        name: input name
-    """
+    """Module for class Amenity"""
 
     __tablename__ = "amenities"
     name = Column(String(128), nullable=False)
-    place_amenities = relationship("Place", secondary=place_amenity)
+    place_amenities = relationship("Place", secondary="place_amenity", viewonly=False)
