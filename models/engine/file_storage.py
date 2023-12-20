@@ -32,7 +32,7 @@ class FileStorage:
                 _splitted = shlex.split(_splitted)
 
                 if (_splitted[0] == cls.__name__):
-                    _obj_dict[kwd] = self.__objects[kwd]
+                    _obj_dict[key] = self.__objects[key]
             return (_obj_dict)
         else:
             return self.__objects
