@@ -11,7 +11,6 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String
 
 
-
 class State(BaseModel, Base):
     """Class State"""
     __tablename__ = "states"
@@ -35,4 +34,3 @@ class State(BaseModel, Base):
             if (element.state_id == self.id):
                 _list_res.append(element)
         return (_list_res)
-

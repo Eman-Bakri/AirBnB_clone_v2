@@ -12,7 +12,6 @@ from sqlalchemy import Column, Table, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 
 
-
 place_amenity = Table("place_amenity", Base.metadata,
                       Column("place_id", String(60),
                              ForeignKey("places.id"),
@@ -77,4 +76,3 @@ class Place(BaseModel, Base):
 
             if type(obj) is Amenity and obj.id not in self.amenity_ids:
                 self.amenity_ids.append(obj.id)
-
