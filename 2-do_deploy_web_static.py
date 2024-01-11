@@ -5,7 +5,7 @@ from fabric.api import env
 from fabric.api import put
 from fabric.api import run
 
-env.hosts = ["34.203.29.245", "54.88.114.244"]
+env.hosts = ['34.203.29.245', '54.88.114.244']
 
 
 def do_deploy(archive_path):
@@ -19,8 +19,8 @@ def do_deploy(archive_path):
     """
     if os.path.isfile(archive_path) is False:
         return False
-    file = archive_path.split("/")[-1]
-    name = file.split(".")[0]
+    file = archive_path.split('/')[-1]
+    name = file.split('.')[0]
 
     if put(archive_path, "/tmp/{}".format(file)).failed is True:
         return False
