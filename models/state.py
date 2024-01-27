@@ -21,7 +21,6 @@ class State(BaseModel, Base):
 
     @property
     def cities(self):
-        """cities getter"""
         allv = models.storage.all()
         _list_citi = []
         _list_res = []
@@ -36,3 +35,4 @@ class State(BaseModel, Base):
             if (element.state_id == self.id):
                 _list_res.append(element)
         return (_list_res)
+
