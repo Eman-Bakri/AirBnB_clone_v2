@@ -20,6 +20,8 @@ class State(BaseModel, Base):
                           backref='state')
     @property
     def cities(self):
+        """cities list
+        """
         allv = models.storage.all()
         _list_citi = []
         _list_res = []
