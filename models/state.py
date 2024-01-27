@@ -18,7 +18,6 @@ class State(BaseModel, Base):
     name = Column(String(128), nullable=False)
     cities = relationship('City', cascade='all, delete, delete-orphan',
                           backref='state')
-
     @property
     def cities(self):
         allv = models.storage.all()
@@ -35,4 +34,3 @@ class State(BaseModel, Base):
             if (element.state_id == self.id):
                 _list_res.append(element)
         return (_list_res)
-
