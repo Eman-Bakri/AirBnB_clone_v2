@@ -15,7 +15,7 @@ def states_list():
 
 
 @app.teardown_appcontext
-def close_session(exc):
+def teardown(exc):
     """terminate the session."""
     storage.close()
 
